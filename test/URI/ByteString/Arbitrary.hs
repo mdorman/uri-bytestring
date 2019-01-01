@@ -37,7 +37,7 @@ sopArbitrary = fmap SOP.gto sopArbitrary'
 
 
 sopArbitrary'
-  :: (SOP.SListI xs, SOP.AllF (SOP.All Arbitrary) xs, SOP.AllF SOP.SListI xs)
+  :: (SOP.SListI xs, SOP.AllF (SOP.All Arbitrary) xs, SOP.All SOP.SListI xs)
   => Gen (SOP.SOP SOP.I xs)
 sopArbitrary' = oneof (map SOP.hsequence $ SOP.apInjs_POP $ SOP.hcpure p arbitrary)
   where
